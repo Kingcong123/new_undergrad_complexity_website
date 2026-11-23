@@ -1,0 +1,211 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #fff;
+  color: #111;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Top bar with hamburger */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background: #fff;
+  border-bottom: 1px solid #111;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  z-index: 100;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  background: none;
+  border: 1px solid #111;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #111;
+}
+
+.topbar-title {
+  margin-left: 1rem;
+  font-size: 0.95rem;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 52px;
+  left: 0;
+  width: 260px;
+  height: calc(100vh - 52px);
+  background: #fff;
+  border-right: 1px solid #111;
+  padding: 1.5rem 0;
+  overflow-y: auto;
+  transition: transform 0.2s ease;
+  z-index: 90;
+}
+
+.sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar a {
+  display: block;
+  padding: 0.65rem 1.5rem;
+  color: #111;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.sidebar a:hover {
+  background: #f5f5f5;
+}
+
+.sidebar a.active {
+  border-left-color: #111;
+  font-weight: bold;
+}
+
+.sidebar .subnav a {
+  padding: 0.4rem 1.5rem 0.4rem 2.25rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.main h2[id] {
+  scroll-margin-top: 68px;
+}
+
+/* Main content */
+.main {
+  margin-top: 52px;
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: margin-left 0.2s ease, width 0.2s ease;
+}
+
+.main > * {
+  width: 100%;
+  max-width: 50rem;
+}
+
+.main.sidebar-collapsed {
+  margin-left: 0;
+  width: 100%;
+}
+
+.main h1 {
+  font-size: 1.75rem;
+  font-weight: normal;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #111;
+}
+
+.main h2 {
+  font-size: 1.45rem;
+  font-weight: normal;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.main section + section {
+  margin-top: 0.5rem;
+}
+
+.main p {
+  margin-bottom: 1rem;
+}
+
+.main ul {
+  margin: 0.5rem 0 1rem;
+  padding-left: 0;
+  list-style-position: inside;
+}
+
+.main img.circuit-diagram {
+  display: block;
+  max-width: 85%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+.theorem {
+  display: block;
+  border: 2px solid #000;
+  padding: 0.9rem 1.1rem;
+  margin: 1.25rem 0;
+  box-sizing: border-box;
+}
+
+.qed {
+  display: inline-block;
+  margin-left: 0.35em;
+  font-size: 1.1em;
+  line-height: 1;
+  color: #000;
+}
+
+/* MathJax: keep long formulas from overflowing awkwardly */
+.main mjx-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .main.sidebar-collapsed {
+    margin-left: 0;
+    width: 100%;
+  }
+}
