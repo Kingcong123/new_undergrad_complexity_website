@@ -9,8 +9,8 @@
     MathJax = {
       loader: {load: ['[tex]/textmacros']},
       tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']],
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
         packages: {'[+]': ['textmacros']}
       }
     };
@@ -123,7 +123,7 @@
              |x\rangle,&amp;\text{if }x\neq w.
            \end{cases}
         $$
-        Notice the amplitude of $w\rangle\$ has been multiplied by $-1\$,
+        Notice the amplitude of $|w\rangle$ has been multiplied by $-1$,
         introducing a rotation or phase of $\pi$ between the marked and unmarked states.
       </p>
       <p>
