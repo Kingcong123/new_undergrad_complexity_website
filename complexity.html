@@ -80,7 +80,7 @@
       
       <p>
         We say that a quantum circuit family is <strong>polynomial-time uniform</strong> if there exists a
-        deterministic Turing machine $M$ such that, given $1^n$ as input,  outputs a description of $C_n$ in polynomial time.
+        deterministic Turing machine $M$ such that, given $1^n$ as input, $M$ outputs a description of $C_n$ in polynomial time.
       </p>
       
       <p>
@@ -105,7 +105,7 @@
       </p>
       
       <p>
-        With all of this in place, we can now formally define what it means for a quantum family to compute a Boolean function.
+        With all of this in place, we can now formally define what it means for a quantum circuit family to compute a Boolean function.
       </p>
       
       <div class="theorem">
@@ -153,10 +153,10 @@
       </div>
       
       <p>
-        Similar to when we define complexity class $\mathsf{BPP}$,
-        the The choice of $\frac{1}{3}$ as the error bound is arbitrary.
+        As with the definition of the complexity class $\mathsf{BPP}$,
+        the choice of $\frac{1}{3}$ as the error bound is arbitrary.
         Any fixed error bound in $(0, \frac{1}{2})$ defines the same complexity class. 
-        This again follows from the fact we can increase the probability of success by boosting.
+        This again follows from the fact that we can increase the probability of success by boosting.
       </p>
       
       <p>
@@ -168,7 +168,7 @@
       
       <p>
         <strong>Shor's algorithm</strong>, discovered by Peter Shor in 1994,
-        solves this problem on a quantum computer in polynomial time with respect to the length og $N$. 
+        solves this problem on a quantum computer in polynomial time with respect to the length of $N$.
         Although integer factorization is technically a search problem rather than a language, Shor's
         algorithm implies that its associated decision problems are in $\mathsf{BQP}$.
       </p>
@@ -239,7 +239,7 @@
         The proof is more involved than the proof that $\mathsf{BPP}\subseteq\mathsf{PSPACE}$, but the underlying idea is similar: 
         we can consider exponentially many possibilities one at a time, reusing memory.
       
-        Because a $n$-qubit quantum state is represented by a vector of length $2^n$, 
+        Because an $n$-qubit quantum state is represented by a vector of length $2^n$,
         we cannot directly store the entire state.
 
         Instead, we can compute individual amplitudes recursively,
@@ -308,9 +308,9 @@
         </p>
 
         <p>
-          While we have stated before that we have been unable to prove such a separatio so far, 
+          While we have stated before that we have been unable to prove such a separation so far,
           quantum algorithms do provide some evidence that quantum computation can offer advantages over classical computation.
-          One example is <strong>Grover's algorithm</strong>, which we will discuss in detail in the next section.
+          One example is <strong>Grover's algorithm</strong>, which we will discuss in detail on the next page.
         </p>
 
     </section>

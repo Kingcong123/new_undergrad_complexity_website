@@ -53,7 +53,7 @@
         On the previous page, we discussed how quantum computation challenges the Strong Church-Turing Thesis.
         We will now study one important example of a quantum algorithm that can outperform classical algorithms:
         <strong>Grover's algorithm</strong>. Grover's algorithm solves an unstructured search problem using
-        fewer queries than are needed in a classcal algorithm. 
+        fewer queries than are needed in a classical algorithm.
         We will first formulate the problem, develop some intuition for the algorithm, 
         and finally prove a rigorous bound on the number of queries it makes.
       </p>
@@ -69,7 +69,7 @@
       </p>
       <p>
         Let's represent this problem rigorously. 
-        For simplicity, let $N=2^n$, so that each objects corresponds to a bit string $x\in\{0,1\}^n$. 
+        For simplicity, let $N=2^n$, so that each object corresponds to a bit string $x\in\{0,1\}^n$.
         Suppose we are given a Boolean function $$f:\{0,1\}^n\to\{0,1\}$$,
         where $f(x)=1$ means that $x$ is an item we are searching for.
         We will assume there is exactly one such input, denoted by $w$:
@@ -78,7 +78,7 @@
         Our goal is to find this <strong>marked input</strong> $w$.
       </p>
       <p>
-        We will treat $w$ as an <strong>oracle</strong>. Our main measure of complexity will be the number of oracle queries. 
+        We will treat $f$ as an <strong>oracle</strong>. Our main measure of complexity will be the number of oracle queries.
         This is important: an oracle query need not take constant time when we actually construct a circuit for $f$.
         We are only interested in how many times an algorithm needs to use the oracle.
       </p>
@@ -95,8 +95,8 @@
         Our first task is to represent the function $f$ using a quantum circuit.
         The obvious idea would be to create a gate that maps $|x\rangle$ to $|f(x)\rangle$.
         However, this generally cannot be a quantum gate because it is not reversible.
-        Many different inputs can have the same value of $f(x), so knowing $f(x)$ does not determine $x$.
-        Furthermore, such a map would take $n$input qubits to just one output qubit.
+        Many different inputs can have the same value of $f(x)$, so knowing $f(x)$ does not determine $x$.
+        Furthermore, such a map would take $n$ input qubits to just one output qubit.
       </p>
       <p>
         In our discussion of classical reversible gates, we saw we could construct a reversible circuit by computing a Boolean function into an extra bit. 
@@ -116,7 +116,7 @@
         It turns out that Grover's algorithm is more convenient to describe using a different type
         of oracle. Rather than writing $$f(x)$$ into an extra qubit, we want to change the
         <em>sign of the amplitude</em> associated with the marked input. Define the
-        <strong>phase oracle</strong> $$O_f$$ by
+        <strong>phase oracle</strong> $O_f$ by
         $$
           O_f|x\rangle=(-1)^{f(x)}|x\rangle=\begin{cases}
              -|x\rangle,&amp;\text{if }x=w,\\
@@ -127,7 +127,7 @@
         introducing a rotation or phase of $\pi$ between the marked and unmarked states.
       </p>
       <p>
-        How can we construct this phase oracle using $U_f$? The key is to initialize the additional
+        How can we construct this phase oracle using $U_f$? We do so by initializing the additional
         qubit to the state
         $$
           |-\rangle=\frac{|0\rangle-|1\rangle}{\sqrt{2}}.
@@ -175,7 +175,7 @@
         $$
           |s\rangle=H^{\otimes n}|0^n\rangle=\frac{1}{\sqrt{N}}\sum_{x\in\{0,1\}^n}|x\rangle.
         $$
-        Here ${\otimes n}$ denotes the tensor product of $n$ Hadamard gates.
+        Here $H^{\otimes n}$ denotes the tensor product of $n$ Hadamard gates.
         After this transformation, every possible input now has the same amplitude $1/\sqrt{N}$.
         However, if we immediately measure all the qubits, the probability of observing $w$ is still only $1/N$.
       </p>
@@ -192,12 +192,12 @@
       <p>
         The important distinction between quantum amplitudes and probabilities is that amplitudes can interfere with each other.
         A negative amplitude may cancel with another amplitude or amplify another amplitude given an appropriate transformation.
-        Therefore, we need transformation that turns the work done by our phase oracle into a larger measurement probability.
+        Therefore, we need a transformation that turns the work done by our phase oracle into a larger measurement probability.
       </p>
       <p>
-        Geometrically, we can view the phase oracle is a <strong>reflection</strong>.
+        Geometrically, we can view the phase oracle as a <strong>reflection</strong>.
         It changes the sign of the component in the direction $|w\rangle$ while leaving all orthogonal components unchanged. 
-        This can be viwed as reflecting the state across the direction corresponding to the superposition of all unmarked inputs.
+        This can be viewed as reflecting the state across the direction corresponding to the superposition of all unmarked inputs.
       </p>
       <h3><strong>The Second Reflection: Inversion About the Mean</strong></h3>
       <p>
@@ -244,7 +244,7 @@
       <p>
         However, this increase does not continue forever. 
         To understand why, it helps to take a geometric perspective.
-        We can view entire computation as taking place inside a 2D plane. 
+        We can view the entire computation as taking place inside a 2D plane.
         In this plane, the first operation reflects the state across the unmarked direction, 
         while the second reflects it across the original uniform superposition $|s\rangle$.
         The composition of two reflections is a <strong>rotation</strong>. 
@@ -264,7 +264,7 @@
         Every iteration rotates it by approximately $2\theta$ radians. 
         After some number of iterations, the state is close to $|w\rangle$, so measuring returns $w$ with high probability.
         If we continue to apply iterations beyond this point, we begin rotating past the marked direction and the probability of success decreases again.
-        Our analysis below will define this $\theta$ and make this rotation idea clearer.
+        Our analysis below will define this $\theta$ and clarify this rotation idea.
       </p>
     </section>
 
@@ -272,7 +272,7 @@
     <section>
       <h2 id="algorithm"><strong>Grover's Algorithm</strong></h2>
       <p>
-        We can now describe Grover's algorithm only the two transformations we have introduced. 
+        We can now describe Grover's algorithm using only the two transformations we have introduced.
         One application of the oracle followed by the diffusion operator is called a
         <strong>Grover iteration</strong>. It is denoted by $G=DO_f$.
       </p>
@@ -346,9 +346,8 @@
           D|\psi\rangle=2\sqrt N\,\mu\,|s\rangle-|\psi\rangle.
         $$
 
-        To understand where is comes from, take $|\psi\rangle=c|s\rangle+|v\rangle$, where
-        $c=\sqrt N\,\mu$ and $|v\rangle$ is orthogonal to $|s\rangle$.
-        This is possible because subtracting $c|s\rangle$ leaves a state whose amplitudes sum to zero. 
+        Now, we decompose $|\psi\rangle$: the direction that sits parallel to $|s\rangle$, and the direction that sits orthogonal to $|s\rangle$, denoted by $|v\rangle$. 
+        We can then write $|\psi\rangle$ as $|\psi\rangle=c|s\rangle+|v\rangle$, where $c=\sqrt{N}\mu$.
         Substituting gives
         $$
           D|\psi\rangle=2c|s\rangle-(c|s\rangle+|v\rangle)=c|s\rangle-|v\rangle.
@@ -420,7 +419,7 @@
         Therefore, Grover's algorithm needs $\Theta(\sqrt N)$ oracle queries.
         Notice that this is a statement about query complexity. 
         The total number of elementary gates also depends on how the oracle is implemented.
-        If one oracle call costs $S_f(n)$ gates, the full circuit uses at most $O(\sqrt{N}(S_f(n)+\operatorname{poly}(n)))$ elementarygates.
+        If one oracle call costs $S_f(n)$ gates, the full circuit uses at most $O(\sqrt{N}(S_f(n)+\operatorname{poly}(n)))$ elementary gates.
         This $\operatorname{poly}(n)$ term accounts for the additional gates needed to implement the phase oracle and diffusion operator.
       </p>
       <p>

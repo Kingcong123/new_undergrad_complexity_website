@@ -57,8 +57,8 @@
     <section>
       <h2 id="classical-reversible-gates"><strong>Classical Reversible Gates</strong></h2>
       <p>
-        Lets start with something we are already familiar with: Boolean circuits. These circuits are often used to model 
-        classical computation. They are composed of boolean gates, notably the AND, OR, and NOT gates, which are used to perform boolean operations on bits. 
+        Let's start with something we are already familiar with: Boolean circuits. These circuits are often used to model
+        classical computation. They are composed of Boolean gates, notably the AND, OR, and NOT gates, which are used to perform Boolean operations on bits.
         <br><br>
         We call a gate <strong> reversible</strong> if it is an injection from the set of possible inputs to the set of possible outputs. In practice, most reversible gates are bijections. 
         Intuitively, a gate is reversible if given the output, we can determine the input.
@@ -74,7 +74,7 @@
         <img src="images/cnot.png" alt="CNOT gate" class="circuit-diagram">
         
         <br> Fundamentally, quantum computation is built on top of reversible operations, with the CNOT gate being an important building block. 
-        Specifically, the laws of quantum mechanics necessitates that operations done to a quantum system are reversible. 
+        Specifically, the laws of quantum mechanics necessitate that operations performed on a quantum system are reversible.
         Intuitively, this means that a quantum system cannot destroy any information about its previous state as it changes. 
         We will see in the next section that operations done on a quantum system are described by unitary transformations, which are always invertible. 
         Note that this requirement only applies to quantum gates, but not to operations like measurements which can cause states to collapse.
@@ -105,7 +105,7 @@
         This means that applying a unitary transformation to a quantum state results in another quantum state with norm 1.
         <br><br>
         It turns out that every reversible classical gate can be represented as a unitary transformation.
-         A reversible classical gate on $n$ bits can be seen as is a bijection $f: \{0,1\}^n \to \{0,1\}^n$.
+         A reversible classical gate on $n$ bits can be seen as a bijection $f: \{0,1\}^n \to \{0,1\}^n$.
         Since $f$ is a bijection, it permutes the possible input bit strings. For example, the classical NOT gate swaps $0$ and $1$.
         <br><br>
         Now, recall that each $n$-bit string $x$ corresponds to a computational basis state $|x\rangle$ in $\mathbb{C}^{2^n}$. 
@@ -182,6 +182,7 @@
 
         Unlike the Hadamard gate, the T gate does not create a superposition. Instead, it introduces a phase shift (a rotation of the qubit on the complex unit circle) while preserving the magnitude of the amplitude.
 
+        For example, consider the state
         $$
         |\psi\rangle=\frac{|0\rangle+|1\rangle}{\sqrt2}.
         $$
@@ -193,7 +194,7 @@
         $$
 
         Notice that the probabilities of measuring $|0\rangle$ and $|1\rangle$ remain $1/2$. However, the relative phase or angle between their amplitudes has changed.
-        Although this phase difference does not immediately affect measurement probabilities in the computational basis, it can affect the outcome of following quantum operations. 
+        Although this phase difference does not immediately affect measurement probabilities in the computational basis, it can affect the outcome of subsequent quantum operations.
         This will become important when we discuss quantum interference.
         <br><br>
         Together, the CNOT, Hadamard, and T gates provide examples of the different operations available in quantum computation: 
@@ -301,7 +302,7 @@
       <h3><strong>Quantum Circuits as Unitary Transformations</strong></h3>
       <p>
         We can use a second perspective when viewing quantum circuits. 
-        Rather than viewing it as a graph, we can view it as a sequence of unitary transformations applied to an initial quantum state.
+        Rather than viewing a quantum circuit as a graph, we can view it as a sequence of unitary transformations applied to an initial quantum state.
 
         <br><br>
         First, we need to specify the initial state of the system. 
@@ -332,9 +333,8 @@
         <br><br>
         Because our circuit is a DAG, we can order its gates in a way that
         respects the dependencies between them. If the overall sequence of unitary transformations is
-        $U_1, U_2, \ldots, U_m$, where each transformation acts on the entire $n$-qubit system.
-        <br><br>
-        Then the final quantum state produced by the circuit is
+        $U_1, U_2, \ldots, U_m$, where each transformation acts on the entire $N$-qubit system,
+        then the final quantum state produced by the circuit is
         $$
           |\psi_{\mathrm{final}}\rangle = U_m U_{m-1}\cdots U_2 U_1 |\psi_0\rangle.
         $$
@@ -382,11 +382,11 @@
         <h3><strong>Why H, T, and CNOT?</strong></h3>
 
         At this point, one might wonder why we chose
-        $H$, $T$, and $\mathrm{CNOT}$ as our gates on which we build quantum circuits?
+        $H$, $T$, and $\mathrm{CNOT}$ as the gates with which we build quantum circuits?
         Are there other gates we could use instead?
         <br><br>
         Consider again Boolean circuits. The choice of elementary Boolean gates is not unique.
-         Although we can choose work with AND, OR, and NOT gates, the NAND gate alone is enough to compute any Boolean function.
+         Although we can choose to work with AND, OR, and NOT gates, the NAND gate alone is enough to compute any Boolean function.
          We say that NAND is a <strong>universal gate</strong> for Boolean circuits.
         <br><br>
         We introduce a similar result for quantum circuits. Although we cannot
